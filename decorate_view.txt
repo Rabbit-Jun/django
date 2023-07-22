@@ -1,0 +1,17 @@
+관리자모드에서의 DB조작vsCMD 명령 프롬프트에서의 DB조작vsCMD
+    -이 과정에서 py manage.py dbshell 로 dbshell에 접속이 안되는 오류가 발생시
+        -sqlite tool 설치가 안되서 나는 오류.
+        -https://www.sqlite.org/download.html 에서 관련 툴을 다운로드
+        (squlite-tools-win64 x86 ~~zip) 
+        -압축을 풀면 3개의 실행파일이 있는데 이주sqlite3.exe실행파일을 생성한 프로젝트 루트 폴더에 복사 붙여넣기
+        -툴을 통해 DB의 테이블 정보 확인 및 테이블명 규칙성 확인할 수 있다
+
+py manage.py dbshell 로 sqlite3에 접속  나올 때는 ctrl z 
+테이블명은 앱명_테이블명 형식임 ex) select * from member(앱 이름)_memo(class 이름);
+.table 을 입력하면 테이블들의 이름을 알 수 있다
+UPDATE member_memo SET memo_text ='환영합니다. 대한민국' WHERE id =1 를 하면 member_memo에서 id=1인 memo_text의 내용을 업데이트함
+
+템플릿 파일의 목적
+    -뷰페이지의 처리 할때 템플릿 파일 사용
+    -개발과 디자인의 분리를 위해
+    -개발자 코드와 디자이너 코드(HTML,CSS)의 분리

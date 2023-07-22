@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .border-class {border: 1px solid black;}
+    </style>
+</head>
+<body>
+    <h1 style="color: blue" class="border-class">Member form</h1>
+    <form action="http://localhost:8000/member/createMemo/" method="POST" id="memoWriteForm">{% csrf_token %}
+        <label for="memo">한줄 메모 입력</label>
+        <input type="text" autocomplete="off" id="memo" name="memoContent" size="100" placeholder="이곳에 메모를 작성하시오">
+    </form>
+    <div>
+        <button type="submit" form="memoWriteForm">한 줄 메모 등록하기</button>
+    </div>
+    
+    <!--리스트뷰-->
+    <div style="padding-top: 50px;">
+        <ul style="line-height:2em">
+            {% for i in lists %}
+                <li>
+                    {{i.id}}
+                    {{i.memo_text}}
+                    20{{i.published_date|date:'y-m-d'}} <!--템플릿 언어 바깥쪽에 입력하면 html언어로 취-->
+                    <button><a href="./edit/{{i.id}}">수정</a></button>
+                    <button><a href="./delete/{{i.id}}">삭제</a></button>
+                </li>
+
+            {% endfor %} 
+            
+
+            
+        </ul>
+    </div>
+
+</body>
+</html>

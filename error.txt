@@ -1,0 +1,28 @@
+#superuser 아이디 찾기
+sqlite3 db.sqlite3 #sqLite3에 접속
+SELECT username FROM auth_user WHERE is_superuser=1; #superuserid 검색
+
+
+
+#superuser 비밀번호 재 설정
+from django.contrib.auth.models import User
+user = User.objects.get(username='admin') #admin 자리에 아이디 넣기
+user.set_password('your_new_password') #your_new_password 자리에 새로운 비번 입력
+user.save()
+
+
+
+<form action="http://localhost:8000/member/createMemo/" method="POST" id="">
+        <label for="memo">한줄 메모 입력</label> #label과 input의 id가 같아야 라벨을 클릭 했을때 폼에 마우스 포인트가 깜박거림
+        <input type="text" id="memo" name="memoContent" size="100" placeholder="이곳에 메모를 작성하시오"> #name은 폼을 전송할때의 이름을 지정하는 거임
+</form> # from 아님 form임 
+
+admin에서 로그인 하고 post를 해야 403에러를 피할 수 있다
+
+
+data= {'lists': lists} #딕셔너리 ={key: value} 템플릿 문법은 딕셔너리 또는 키 값을 통해 데이터 값 출력
+
+ | 는 shift \ 
+
+db_article=Memo.objects.get(idx)라 하면 에러 발생
+db_article=Memo.objects.get(id=idx) 라 해야 id=idx와 같은 Memo 객체를 조회하며 db_article 변수에 할당
